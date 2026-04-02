@@ -1,0 +1,23 @@
+{
+  "name": "python-sanic",
+  "version": "1.0.0",
+  "registry": {
+    "mode": "local"
+  },
+  "services": [
+    {
+      "name": "python-sanic",
+      "path": ".",
+      "image": "python-sanic",
+      "manifests": ".gws/k8s",
+      "dockerfile": ".gws/Dockerfile"
+    }
+  ],
+  "provision": {
+    "environments": {
+      "dev": {
+        "type": "k3d"
+      }
+    }
+  }
+}

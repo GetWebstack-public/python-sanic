@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-sanic
+  namespace: getwebstack
+  labels:
+    app: python-sanic
+    component: web
+    environment: development
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-sanic
+  template:
+    metadata:
+      labels:
+        app: python-sanic
+        component: web
+        environment: development
+    spec:
+      containers:
+      - name: python-sanic
+        image: python-sanic
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8000
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "250m"
+      restartPolicy: Always
